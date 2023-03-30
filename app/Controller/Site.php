@@ -6,6 +6,8 @@ use Model\Post;
 use Src\View;
 use Src\Request;
 use Model\User;
+use Model\Student;
+use Model\dist;
 use Src\Auth\Auth;
 
 class Site
@@ -15,10 +17,12 @@ class Site
         $posts = Post::where('id', $request->id)->get();
         return (new View())->render('site.post', ['posts' => $posts]);
     }
+
     public function hello(): string
     {
         return new View('site.hello', ['message' => 'hello working']);
     }
+
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
@@ -26,6 +30,7 @@ class Site
         }
         return new View('site.signup');
     }
+
     public function login(Request $request): string
     {
         //Если просто обращение к странице, то отобразить форму
@@ -46,6 +51,41 @@ class Site
         app()->route->redirect('/hello');
     }
 
+    public function sgroup(): string
+    {
+        return (new View())->render('site.sgroup');
+    }
+
+    public function nstud(Request $request): string
+    {
+        if ($request->method === 'POST' && Student::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+        return new View('site.nstud');
+    }
+
+    public function sdis(Request $request): string
+    {
+        if ($request->method === 'POST' && dist::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+        return (new View())->render('site.sdis');
+    }
+
+    public function strStud(): string
+    {
+        return (new View())->render('site.strStud');
+    }
+
+    public function log(): string
+    {
+        return (new View())->render('site.log');
+    }
+
+    public function izm(): string
+    {
+        return (new View())->render('site.izm');
+    }
 }
 
 
