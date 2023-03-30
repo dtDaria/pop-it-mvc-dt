@@ -17,3 +17,4 @@ class dist extends Model
     ];
     protected $table = 'dist';
 }
+//hjbnh
