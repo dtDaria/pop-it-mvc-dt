@@ -5,14 +5,15 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class kontr extends Model
+class strStudents extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'Контроль',
-
+        'Группа',
+        'Студент',
+        'Дисциплина'
     ];
-    protected $table = 'kontr';
+    protected $table = 'strStudents';
 }

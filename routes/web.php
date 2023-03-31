@@ -11,5 +11,4 @@ Route::add(['GET', 'POST'], '/sgroup', [Controller\Site::class, 'sgroup']);
 Route::add(['GET', 'POST'], '/nstud', [Controller\Site::class, 'nstud']);
 Route::add(['GET', 'POST'], '/sdis', [Controller\Site::class, 'sdis']);
 Route::add(['GET', 'POST'], '/strStud', [Controller\Site::class, 'strStud']);
-Route::add(['GET', 'POST'], '/log', [Controller\Site::class, 'log']);
 Route::add(['GET', 'POST'], '/izm', [Controller\Site::class, 'izm']);

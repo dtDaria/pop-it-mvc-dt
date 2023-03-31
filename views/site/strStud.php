@@ -13,9 +13,9 @@
     </div>
     <div class="str">
         <form>
-            <input type="text" name="dis" placeholder="Группа:">
-            <input type="text" name="fio" placeholder="Студент:">
-            <input type="text" name="gr" placeholder="Дисциплина:">
+            <input type="text" name="Группа" placeholder="Группа:">
+            <input type="text" name="Студент" placeholder="Студент:">
+            <input type="text" name="Дисциплина" placeholder="Дисциплина:">
             <button>Выбрать</button>
 
         </form>

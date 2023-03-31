@@ -8,6 +8,10 @@ use Src\Request;
 use Model\User;
 use Model\Student;
 use Model\dist;
+use Model\group;
+use Model\strStudent;
+use Model\kontr;
+use Model\izm;
 use Src\Auth\Auth;
 
 class Site
@@ -45,15 +49,19 @@ class Site
         return new View('site.login', ['message' => 'Неправильные логин или пароль']);
     }
 
+
     public function logout(): void
     {
         Auth::logout();
         app()->route->redirect('/hello');
     }
 
-    public function sgroup(): string
+    public function sgroup(Request $request): string
     {
-        return (new View())->render('site.sgroup');
+        if ($request->method === 'POST' && group::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
+        return new View('site.sgroup');
     }
 
     public function nstud(Request $request): string
@@ -66,24 +74,25 @@ class Site
 
     public function sdis(Request $request): string
     {
-        if ($request->method === 'POST' && dist::create($request->all())) {
+        if ($request->method === 'POST' && dist::create($request->all()) && kontr::create($request->all())) {
             app()->route->redirect('/hello');
         }
         return (new View())->render('site.sdis');
     }
 
-    public function strStud(): string
+    public function strStud(Request $request): string
     {
+        if ($request->method === 'POST' && strStuds::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
         return (new View())->render('site.strStud');
     }
 
-    public function log(): string
+    public function izm(Request $request): string
     {
-        return (new View())->render('site.log');
-    }
-
-    public function izm(): string
-    {
+        if ($request->method === 'POST' && izm::create($request->all())) {
+            app()->route->redirect('/hello');
+        }
         return (new View())->render('site.izm');
     }
 }

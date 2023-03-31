@@ -10,7 +10,7 @@
 <body>
 <div class="header">
     <p>Администратор</p>
-    <a href="<?= app()->route->getUrl('/log') ?>">Вход</a>
+    <a href="<?= app()->route->getUrl('/login') ?>">Выход</a>
 </div>
 
 <div class="ad1">
@@ -18,6 +18,7 @@
     <a href="<?= app()->route->getUrl('/nstud') ?>">Создание студента</a>
     <a href="<?= app()->route->getUrl('/sdis') ?>">Создать дисциплины</a>
     <a href="<?= app()->route->getUrl('/strStud') ?>">Страница студента</a>
+    <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация нового пользователя</a>
 </div>
 
 <div class="ad2">

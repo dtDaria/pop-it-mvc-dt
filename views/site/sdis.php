@@ -17,6 +17,7 @@
         <input type="text" name="Название" placeholder="Название">
         <input type="time" name="Часы" placeholder="Часы">
         <input type="text" name="Семестр" placeholder="Семестр">
+        <input type="text" name="Контроль" placeholder="Контроль">
         <button class="vhod">Создать</button>
     </form>
 </div>

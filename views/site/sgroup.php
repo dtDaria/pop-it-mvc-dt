@@ -14,8 +14,8 @@
 <div class="group">
 
     <form method="post" class="group1">
-        <input tupe="text" name="ngroup" placeholder="Номер группы">
-        <input tupe="text" name="kurs" placeholder="Курс">
+        <input type="text" name="Курс" placeholder="Курс">
+        <input type="text" name="Номер_группы" placeholder="Номер группы">
         <button tupe="submit">Создать</button>
     </form>
 

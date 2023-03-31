@@ -2,7 +2,7 @@
 return [
     'driver' => 'mysql',
     'host' => 'localhost',
-    'database' => 'dekon',
+    'database' => 'dekon1',
     'username' => 'root',
     'password' => 'QWEasd123',
     'charset' => 'utf8',
