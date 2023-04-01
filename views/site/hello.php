@@ -10,15 +10,19 @@
 <body>
 <div class="header">
     <p>Администратор</p>
-    <a href="<?= app()->route->getUrl('/login') ?>">Выход</a>
+    <a href="<?= app()->route->getUrl('/login') ?>">Выход (<?= app()->auth::user()->login ?>)</a>
 </div>
 
 <div class="ad1">
+    <?php
+    if (app()->auth::user()->Admin()):
+    ?>
     <a href="<?= app()->route->getUrl('/sgroup') ?>">Создать группу</a>
     <a href="<?= app()->route->getUrl('/nstud') ?>">Создание студента</a>
     <a href="<?= app()->route->getUrl('/sdis') ?>">Создать дисциплины</a>
     <a href="<?= app()->route->getUrl('/strStud') ?>">Страница студента</a>
     <a href="<?= app()->route->getUrl('/signup') ?>">Регистрация нового пользователя</a>
+    <?php endif; ?>
 </div>
 
 <div class="ad2">

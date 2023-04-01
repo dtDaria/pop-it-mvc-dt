@@ -19,11 +19,9 @@ body{
     font-size: 19pt;
     text-decoration: none;
     color: #f8f8f8;
-
 }
 .reg1{
     margin-top: 50px;
-    font-size: 30pt;
 }
 .reg2{
     display: flex;
@@ -35,11 +33,23 @@ body{
     margin-top: 20px;
     height: 30px;
     width: 260px;
-    margin-left: 43%;
+    margin-left: 44%;
 }
-.reg2> button{
+.reg2>button{
     margin-top: 60px;
     height: 30px;
     width: 150px;
-    margin-left: 46%;
+    margin-left: 47%;
+}
+#prof{
+    margin-top: 20px;
+    height: 30px;
+    width: 260px;
+    margin-left: 44%;
+}
+.reg2>label{
+    text-align: center;
+    padding-top: 19px;
+    font-size: 19pt;
+    text-decoration: none;
 }
