@@ -2,8 +2,6 @@
 
 namespace Controller;
 
-use Illuminate\Database\Capsule\Manager as DB;
-
 use Model\Post;
 use Model\strStuds;
 use Src\View;
@@ -27,12 +25,7 @@ class Site
 
     public function hello(): string
     {
-//        $students = Student::all();
-//        $groups = groups::all();
-        $students = DB::table('students')
-            ->join('groups', 'students.GroupID', '=', 'groups.GroupID')
-            ->select('students.*', 'groups.Номер_группы')->get();
-        return new View('site.hello', ['students' => $students]);
+        return new View('site.hello');
     }
 
     public function signup(Request $request): string
@@ -74,11 +67,10 @@ class Site
 
     public function nstud(Request $request): string
     {
-        $groups = groups::all();
         if ($request->method === 'POST' && Student::create($request->all())) {
             app()->route->redirect('/hello');
         }
-        return new View('site.nstud', ['groups'=>$groups]);
+        return new View('site.nstud');
     }
 
     public function sdis(Request $request): string
@@ -105,11 +97,4 @@ class Site
         return (new View())->render('site.izm');
     }
 }
-
-//$discipline = DB::table('disciplines')
-//    ->join('worker_disciplines', 'disciplines.id', '=', 'worker_disciplines.id_discipline')
-//    ->join('users', 'worker_disciplines.id_worker', '=', 'users.id')
-//    ->join('divisions', 'users.id_division', '=', 'divisions.id')
-//    ->select('disciplines.*')->whereIn('divisions.id', $data["filter"])
-//    ->where('users.name', '=', $data["search"])->get();
 
