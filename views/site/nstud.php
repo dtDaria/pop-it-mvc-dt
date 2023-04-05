@@ -20,6 +20,13 @@
             <input type="text" name="Пол" placeholder="Пол">
             <input type="date" name="birthday" placeholder="Дата рождения">
             <input type="text" name="Адрес" placeholder="Адрес прописки">
+            <select name="GroupID">
+                <?php
+                foreach ($groups as $group){
+                    echo "<option value=\"$group->GroupID\">" . $group->Номер_группы . '</option>';
+                }
+                ?>
+            </select>
             <button class="vhod">Вход</button>
         </form>
 

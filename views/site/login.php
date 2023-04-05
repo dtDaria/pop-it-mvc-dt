@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +10,12 @@
 </head>
 <body>
 <div class="header">
+    
     <p>Вход в систему</p>
 </div>
 <div class="vhod">
     <form method="post" class="vhod1">
+        <h><?= $message ?? ''; ?></h>
         <input type="text" name="login"placeholder="Логин">
         <input type="password" name="password"placeholder="Пароль">
         <button>Войти</button>

@@ -37,6 +37,12 @@ body{
     width: 260px;
     margin-left: 43%;
 }
+.vhod1>h{
+    text-align: center;
+    padding-top: 19px;
+    font-size: 19pt;
+    text-decoration: none;
+}
 .vhod1> button{
     margin-top: 60px;
     height: 30px;

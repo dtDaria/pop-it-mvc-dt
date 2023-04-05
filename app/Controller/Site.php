@@ -2,13 +2,16 @@
 
 namespace Controller;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 use Model\Post;
+use Model\strStuds;
 use Src\View;
 use Src\Request;
 use Model\User;
 use Model\Student;
 use Model\dist;
-use Model\group;
+use Model\groups;
 use Model\strStudent;
 use Model\kontr;
 use Model\izm;
@@ -24,7 +27,12 @@ class Site
 
     public function hello(): string
     {
-        return new View('site.hello', ['message' => 'hello working']);
+//        $students = Student::all();
+//        $groups = groups::all();
+        $students = DB::table('students')
+            ->join('groups', 'students.GroupID', '=', 'groups.GroupID')
+            ->select('students.*', 'groups.Номер_группы')->get();
+        return new View('site.hello', ['students' => $students]);
     }
 
     public function signup(Request $request): string
@@ -46,7 +54,7 @@ class Site
             app()->route->redirect('/hello');
         }
         //Если аутентификация не удалась, то сообщение об ошибке
-        return new View('site.login', ['message' => 'Неправильные логин или пароль']);
+        return new View('site.login', ['message' => 'Такого пользователя нет в системе']);
     }
 
 
@@ -58,7 +66,7 @@ class Site
 
     public function sgroup(Request $request): string
     {
-        if ($request->method === 'POST' && group::create($request->all())) {
+        if ($request->method === 'POST' && groups::create($request->all())) {
             app()->route->redirect('/hello');
         }
         return new View('site.sgroup');
@@ -66,10 +74,11 @@ class Site
 
     public function nstud(Request $request): string
     {
+        $groups = groups::all();
         if ($request->method === 'POST' && Student::create($request->all())) {
             app()->route->redirect('/hello');
         }
-        return new View('site.nstud');
+        return new View('site.nstud', ['groups'=>$groups]);
     }
 
     public function sdis(Request $request): string
@@ -97,4 +106,10 @@ class Site
     }
 }
 
+//$discipline = DB::table('disciplines')
+//    ->join('worker_disciplines', 'disciplines.id', '=', 'worker_disciplines.id_discipline')
+//    ->join('users', 'worker_disciplines.id_worker', '=', 'users.id')
+//    ->join('divisions', 'users.id_division', '=', 'divisions.id')
+//    ->select('disciplines.*')->whereIn('divisions.id', $data["filter"])
+//    ->where('users.name', '=', $data["search"])->get();
 

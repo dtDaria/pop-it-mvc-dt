@@ -41,5 +41,23 @@
     <p>Успеваемость:</p>
     <p>Кол.часов:</p>
 </div>
+
+<div>
+    <?php
+    foreach ($students as $student) {
+        echo '<p> StudentID: ' . $student->StudentsID . '</p>';
+        echo '<p> Фамилия: ' . $student->Фамилия . '</p>';
+        echo '<p> Имя: ' . $student->Имя . '</p>';
+        echo '<p> Отчество: ' . $student->Отчество . '</p>';
+        echo '<p> Пол: ' . $student->Пол . '</p>';
+        echo '<p> День рождение: ' . $student->birthday . '</p>';
+        echo '<p> Адрес: ' . $student->Адрес . '</p>';
+        echo '<p> GroupID: ' . $student->GroupID . '</p>';
+        echo '<p> Группа: ' . $student->Номер_группы . '</p>';
+        echo '<br>';
+    }
+    ?>
+</div>
+
 </body>
 </html>

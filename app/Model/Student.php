@@ -17,6 +17,7 @@ class Student extends Model
         'Пол',
         'birthday',
         'Адрес',
+        'GroupID'
     ];
     protected $table = 'students';
 }

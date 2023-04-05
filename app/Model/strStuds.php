@@ -5,7 +5,7 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class strStudents extends Model
+class strStuds extends Model
 {
     use HasFactory;
 
@@ -15,5 +15,5 @@ class strStudents extends Model
         'Студент',
         'Дисциплина'
     ];
-    protected $table = 'strStudents';
+    protected $table = 'strStuds';
 }
