@@ -2,8 +2,10 @@
 
 <div class="header5"><p>Регистрация нового пользователя</p>
 </div>
+
 <div class="reg1">
 <form method="post" class="reg2">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <input type="text" name="name" placeholder="Имя">
     <input type="text" name="login" placeholder="Логин">
     <input type="password" name="password" placeholder="Пароль">
@@ -12,6 +14,8 @@
         <option value="1">Admin (1)</option>
         <option value="0">User (0)</option>
     </select>
+    <h><?= $message ?? ''; ?></h>
     <button>Зарегистрироваться</button>
+
 </form>
 </div>

@@ -14,6 +14,7 @@ use Model\strStudent;
 use Model\kontr;
 use Model\izm;
 use Src\Auth\Auth;
+use Src\Validator\Validator;
 
 class Site
 {
@@ -28,10 +29,34 @@ class Site
         return new View('site.hello');
     }
 
+//    public function signup(Request $request): string
+//    {
+//        if ($request->method === 'POST' && User::create($request->all())) {
+//            app()->route->redirect('/go');
+//        }
+//        return new View('site.signup');
+//    }
     public function signup(Request $request): string
     {
-        if ($request->method === 'POST' && User::create($request->all())) {
-            app()->route->redirect('/go');
+        if ($request->method === 'POST') {
+
+            $validator = new Validator($request->all(), [
+                'name' => ['required'],
+                'login' => ['required', 'unique:users,login'],
+                'password' => ['required']
+            ], [
+                'required' => 'Поле :field пусто',
+                'unique' => 'Поле :field должно быть уникально'
+            ]);
+
+            if($validator->fails()){
+                return new View('site.signup',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
+            }
+
+            if (User::create($request->all())) {
+                app()->route->redirect('/login');
+            }
         }
         return new View('site.signup');
     }
@@ -63,6 +88,7 @@ class Site
             app()->route->redirect('/hello');
         }
         return new View('site.sgroup');
+
     }
 
     public function nstud(Request $request): string
@@ -96,5 +122,6 @@ class Site
         }
         return (new View())->render('site.izm');
     }
+
 }
 
