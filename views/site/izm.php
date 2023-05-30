@@ -10,6 +10,7 @@
 <body>
 <div class="header4">
     <p>Изменение</p>
+    <a href="<?= app()->route->getUrl('/hello') ?>">Главная страница</a>
 </div>
 <div class="izm1">
     <input type="text" name="izmenenie1" placeholder="1:">

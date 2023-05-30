@@ -10,6 +10,7 @@
 <body>
 <div class="header1">
     <p>Создание группы</p>
+    <a href="<?= app()->route->getUrl('/hello') ?>">Главная страница</a>
 </div>
 <div class="group">
 

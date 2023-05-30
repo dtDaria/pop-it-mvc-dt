@@ -20,6 +20,13 @@ body{
     text-decoration: none;
     color: #f8f8f8;
 }
+.header3 >a{
+    text-decoration: none;
+    font-size: 19pt;
+    color: #f8f8f8;
+    padding-top: 19px;
+    margin-right: 50px;
+}
 .str{
     margin-top: 50px;
 }

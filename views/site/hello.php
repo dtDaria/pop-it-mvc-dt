@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="header">
-    <p>Администратор</p>
+
     <a href="<?= app()->route->getUrl('/login') ?>">Выход (<?= app()->auth::user()->login ?>)</a>
 </div>
 

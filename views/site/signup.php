@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/pop-it-mvc/public/2zd/signup.css">
 
 <div class="header5"><p>Регистрация нового пользователя</p>
+    <a href="<?= app()->route->getUrl('/hello') ?>">Главная страница</a>
 </div>
 
 <div class="reg1">

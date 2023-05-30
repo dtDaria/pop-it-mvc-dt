@@ -10,6 +10,7 @@
 <body>
     <div class="header3">
         <p>Страница студента</p>
+        <a href="<?= app()->route->getUrl('/hello') ?>">Главная страница</a>
     </div>
     <div class="str">
         <form>
