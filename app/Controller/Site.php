@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Illuminate\Database\Capsule\Manager as DB;
 use Model\Post;
 use Model\strStuds;
 use Src\View;
@@ -11,6 +12,7 @@ use Model\Student;
 use Model\dist;
 use Model\groups;
 use Model\strStudent;
+use Model\usp_ocen;
 use Model\kontr;
 use Model\izm;
 use Src\Auth\Auth;
@@ -26,7 +28,17 @@ class Site
 
     public function hello(): string
     {
-        return new View('site.hello');
+        $groups = groups::all();
+        $usp_ocen = usp_ocen::all();
+        $dist = dist::all();
+        $students = DB::table('students')
+            ->join('groups', 'students.GroupID', '=', 'groups.GroupID')
+            ->join('usp_ocen', 'students.StudentsID', '=', 'usp_ocen.StudentsID')
+            ->join('dist', 'usp_ocen.Distid', '=', 'dist.Distid')
+            ->select('students.*', 'groups.*', 'usp_ocen.*', 'dist.*')
+            ->get();
+
+        return new View('site.hello', ['groups' => $groups, 'students' => $students, 'usp_ocen' => $usp_ocen, 'dist' => $dist]);
     }
 
 //    public function signup(Request $request): string
@@ -36,6 +48,7 @@ class Site
 //        }
 //        return new View('site.signup');
 //    }
+
     public function signup(Request $request): string
     {
         if ($request->method === 'POST') {
@@ -49,7 +62,7 @@ class Site
                 'unique' => 'Поле :field должно быть уникально'
             ]);
 
-            if($validator->fails()){
+            if ($validator->fails()) {
                 return new View('site.signup',
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }
@@ -93,18 +106,22 @@ class Site
 
     public function nstud(Request $request): string
     {
+        $groups = groups::all();
+
         if ($request->method === 'POST' && Student::create($request->all())) {
             app()->route->redirect('/hello');
         }
-        return new View('site.nstud');
+        return new View('site.nstud',['groups' => $groups]);
     }
 
     public function sdis(Request $request): string
     {
-        if ($request->method === 'POST' && dist::create($request->all()) && kontr::create($request->all())) {
+        $kontr = kontr::all();
+
+        if ($request->method === 'POST' && dist::create($request->all())) {
             app()->route->redirect('/hello');
         }
-        return (new View())->render('site.sdis');
+        return (new View())->render('site.sdis',['kontr' => $kontr]);
     }
 
     public function strStud(Request $request): string

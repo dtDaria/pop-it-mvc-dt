@@ -15,9 +15,10 @@
 <div class="group">
 
     <form method="post" class="group1">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <input type="text" name="Курс" placeholder="Курс">
         <input type="text" name="Номер_группы" placeholder="Номер группы">
-        <button tupe="submit">Создать</button>
+        <button type="submit">Создать</button>
     </form>
 
 </div>

@@ -5,16 +5,16 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class dist extends Model
+class usp_ocen extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'Название',
-        'Часы',
-        'Семестр',
-        'KontrID',
+        'UspID',
+        'Distid',
+        'StudentsID',
+        'Оценка',
     ];
-    protected $table = 'dist';
+    protected $table = 'usp_ocen';
 }

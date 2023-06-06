@@ -13,7 +13,6 @@ class groups extends Model
     protected $fillable = [
         'Курс',
         'Номер_группы',
-
     ];
     protected $table = 'groups';
 }

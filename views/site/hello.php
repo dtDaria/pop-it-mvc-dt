@@ -34,12 +34,20 @@
     </form>
 </div>
 <div class="ad3">
-    <p>№:</p>
-    <p>Группа:</p>
-    <p>ФИО:</p>
-    <p>Дисциплина:</p>
-    <p>Успеваемость:</p>
-    <p>Кол.часов:</p>
+
+    <?php
+    foreach ($students as $student) {
+        echo '<h5>Имя</h5>'  . $student->Имя . '<h5>Фамилия</h5>' . $student->Фамилия . '<h5> Отчетсво</h5>' . $student->Отчество;
+        echo '<h5>Курс</h5>'  . $student->Курс;
+        echo '<h5>Номер группы</h5>' . $student->Номер_группы;
+        echo '<h5>Успеваемость</h5>' . $student->Оценка;
+        echo '<h5>Дисциплина</h5>' . $student->Название;
+        echo '<h5>Часы</h5>' . $student->Часы;
+        echo '<h5>Семестр</h5>' . $student->Семестр;
+
+    }
+    ?>
+    
 </div>
 </body>
 </html>

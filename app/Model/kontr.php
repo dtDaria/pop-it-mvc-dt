@@ -11,8 +11,7 @@ class kontr extends Model
 
     public $timestamps = false;
     protected $fillable = [
-        'Контроль',
-
+        'KontrID',
     ];
     protected $table = 'kontr';
 }
